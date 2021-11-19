@@ -1,0 +1,81 @@
+{% extends 'base/main.html' %}
+ {% block content %}
+
+
+ <style>
+     .home-container{
+         display: grid;
+         grid-template-columns: 1fr 3fr 1fr;
+     }
+    
+</style>
+
+<div class="home-container">
+
+<form method="GET" action="{% url 'home' %}">
+
+
+<input type="text" name="q" placehlder="Search rooms...." />
+</form>
+
+<div>
+<a href='/profile'>Profile</a>
+<h3>Browse Topics </h3> 
+<a href='/login'>Login </a>
+<a href='/signup'>SignUp </a>
+<hr>
+
+
+
+{% for topic in topics  %}
+<div>
+<a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+
+
+
+</div>
+
+{% endfor %}
+
+<hr>
+
+<div>
+<a href='/create'>Create Room</a>
+
+<div>
+
+
+{% for room in rooms %}
+<div>
+<a href="{% url 'updateroom' room.id %}">Update Room</a>
+</div>
+
+<a href="{% url 'deleteroom' room.id %}">Delete</a>
+<hr>
+
+<div>
+
+<span> {{room.topic}}:</span>
+<h5>{{room.id}}--<a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+<hr>
+</div>
+</div>
+
+</div>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+</div>
+
+
+
+
+
+    {% endblock content %}

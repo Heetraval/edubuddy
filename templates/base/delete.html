@@ -1,0 +1,17 @@
+{% extends 'base/main.html' %}
+
+
+
+{% block content %}
+
+<form method="post" action="">
+{% csrf_token %}
+<p> Are you sure want to delete room "{{obj}}"</p>
+<a href='/'}"> Go Back </a>
+<input type="submit" value="confirm" />
+
+{% endblock content %}
+
+
+
+
